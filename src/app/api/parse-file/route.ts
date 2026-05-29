@@ -32,12 +32,10 @@ export async function POST(req: NextRequest) {
         const result = await mammoth.extractRawText({ buffer });
         text = result.value;
       } else if (ext === "pdf") {
-        const { PDFParse } = await import("pdf-parse");
-        const buffer = new Uint8Array(await file.arrayBuffer());
-        const pdf = new PDFParse({ data: buffer });
-        const result = await pdf.getText();
-        await pdf.destroy();
-        text = result.text;
+        const pdf = await import("pdf-parse");
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const data = await pdf.default(buffer);
+        text = data.text;
       } else {
         return NextResponse.json(
           { error: "Format file tidak didukung. Gunakan TXT, DOCX, atau PDF." },
