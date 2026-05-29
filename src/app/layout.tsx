@@ -106,6 +106,8 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
+        <link rel="icon" href="/favicon.ico" />
+         <link rel="icon" href="/icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
