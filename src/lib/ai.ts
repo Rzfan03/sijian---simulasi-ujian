@@ -29,6 +29,27 @@ function cleanJSON(str: string): string {
   return s;
 }
 
+async function callGroq(prompt: string): Promise<string> {
+  const completion = await groq.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+    messages: [{ role: "user", content: prompt }],
+    temperature: 0.5,
+    max_tokens: 8000,
+  });
+  return completion.choices[0]?.message?.content ?? "[]";
+}
+
+function parseQuestions(content: string) {
+  const jsonStr = extractJSON(content);
+  const cleaned = cleanJSON(jsonStr);
+
+  try {
+    return JSON.parse(cleaned);
+  } catch {
+    return JSON.parse(jsonStr);
+  }
+}
+
 export async function generateQuestionsFromText(
   text: string,
   count: number = 20
@@ -59,41 +80,34 @@ Balas HANYA dengan JSON array berikut (tanpa teks lain, tanpa markdown, tanpa ba
 
 correctAnswer adalah index (0-3) dari pilihan yang benar.`;
 
-  const completion = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
-    messages: [{ role: "user", content: prompt }],
-    temperature: 0.7,
-    max_tokens: 8000,
-  });
-
-  const content = completion.choices[0]?.message?.content ?? "[]";
-  const jsonStr = extractJSON(content);
-  const cleaned = cleanJSON(jsonStr);
-
-  let raw: Array<{
-    question: string;
-    options: string[];
-    correctAnswer: number;
-    explanation?: string;
-  }>;
-
-  try {
-    raw = JSON.parse(cleaned);
-  } catch {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      raw = JSON.parse(jsonStr);
-    } catch {
-      throw new Error(
-        "Gagal memproses respons AI. Silakan coba upload ulang."
-      );
+      const content = await callGroq(prompt);
+      const raw = parseQuestions(content);
+
+      if (!Array.isArray(raw) || raw.length === 0) {
+        throw new Error("AI mengembalikan array kosong");
+      }
+
+      return raw.map((q: any) => ({
+        id: generateId(),
+        question: q.question,
+        options: q.options,
+        correctAnswer: q.correctAnswer,
+        explanation: q.explanation,
+      }));
+    } catch (err) {
+      lastErr = err;
+      if (attempt === 0) {
+        const msg =
+          err instanceof Error ? err.message : "Gagal memproses respons AI";
+        console.warn(`AI attempt ${attempt + 1} failed:`, msg);
+      }
     }
   }
 
-  return raw.map((q) => ({
-    id: generateId(),
-    question: q.question,
-    options: q.options,
-    correctAnswer: q.correctAnswer,
-    explanation: q.explanation,
-  }));
+  const msg =
+    lastErr instanceof Error ? lastErr.message : "Gagal memproses respons AI";
+  throw new Error(msg);
 }
