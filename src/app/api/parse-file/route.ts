@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import mammoth from "mammoth";
-import { PDFParse } from "pdf-parse";
 
 export const maxDuration = 60;
 
@@ -33,8 +32,12 @@ export async function POST(req: NextRequest) {
         const result = await mammoth.extractRawText({ buffer });
         text = result.value;
       } else if (ext === "pdf") {
+        const { PDFParse } = await import("pdf-parse");
         const buffer = new Uint8Array(await file.arrayBuffer());
-        text = await extractPdfText(buffer);
+        const pdf = new PDFParse({ data: buffer });
+        const result = await pdf.getText();
+        await pdf.destroy();
+        text = result.text;
       } else {
         return NextResponse.json(
           { error: "Format file tidak didukung. Gunakan TXT, DOCX, atau PDF." },
@@ -56,11 +59,4 @@ export async function POST(req: NextRequest) {
     console.error("parse-file error:", err);
     return NextResponse.json({ error: "Gagal memproses file" }, { status: 500 });
   }
-}
-
-async function extractPdfText(buffer: Uint8Array): Promise<string> {
-  const pdf = new PDFParse({ data: buffer });
-  const result = await pdf.getText();
-  await pdf.destroy();
-  return result.text;
 }
