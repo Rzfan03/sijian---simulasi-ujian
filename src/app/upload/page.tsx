@@ -83,7 +83,6 @@ export default function UploadPage() {
       <main style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "3rem 1.5rem" }}>
         <div style={{ width: "100%", maxWidth: 520 }}>
 
-          {/* Header */}
           <div style={{ textAlign: "center", marginBottom: "2rem" }}>
             <h1 style={{ fontSize: "1.75rem", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em", marginBottom: "0.5rem" }}>
               Upload Kisi-Kisi
@@ -96,7 +95,6 @@ export default function UploadPage() {
           <div className="card" style={{ padding: "2rem" }}>
             {step === "upload" && (
               <>
-                {/* Drop zone */}
                 <div
                   onClick={() => inputRef.current?.click()}
                   onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -136,7 +134,6 @@ export default function UploadPage() {
                   )}
                 </div>
 
-                {/* Format badges */}
                 <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
                   {["TXT", "DOCX", "PDF"].map((fmt) => (
                     <span key={fmt} className="badge badge-indigo">

@@ -75,7 +75,6 @@ export default function ExamPage() {
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Navbar onNavClick={() => setShowLeaveWarn(true)} />
 
-      {/* Sticky top bar */}
       <div style={{
         background: "var(--surface)", borderBottom: "1px solid var(--border)",
         padding: "0.75rem 1rem", position: "sticky", top: 60, zIndex: 40,
@@ -117,7 +116,6 @@ export default function ExamPage() {
         `}</style>
         <div className="exam-grid" style={{ maxWidth: 960, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 200px", gap: "1.25rem", alignItems: "start" }}>
 
-          {/* Question */}
           <div className="card" style={{ padding: "2rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
               <span className="badge badge-indigo">Soal {current + 1}</span>
@@ -163,7 +161,6 @@ export default function ExamPage() {
             </div>
           </div>
 
-          {/* Navigator */}
           <div className="card exam-nav" style={{ padding: "1.25rem" }}>
             <p style={{ fontWeight: 700, fontSize: "0.8rem", color: "var(--text)", marginBottom: "0.875rem" }}>Navigasi Soal</p>
             <div className="exam-nav-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "0.375rem" }}>
@@ -197,7 +194,6 @@ export default function ExamPage() {
         </div>
       </main>
 
-      {/* Leave warning modal */}
       {showLeaveWarn && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, padding: "1rem" }}
           onClick={() => setShowLeaveWarn(false)}>
@@ -229,7 +225,6 @@ export default function ExamPage() {
         </div>
       )}
 
-      {/* Confirm finish modal */}
       {showConfirm && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, padding: "1rem" }}
           onClick={() => setShowConfirm(false)}>

@@ -2,7 +2,7 @@ export interface Question {
   id: string;
   question: string;
   options: string[];
-  correctAnswer: number; // index of correct option
+  correctAnswer: number;
   explanation?: string;
 }
 
@@ -10,10 +10,10 @@ export interface ExamSession {
   id: string;
   title: string;
   questions: Question[];
-  answers: Record<string, number>; // questionId -> selectedOption index
+  answers: Record<string, number>;
   startedAt: number;
   finishedAt?: number;
-  timeLimit: number; // in seconds
+  timeLimit: number;
 }
 
 export interface ExamResult {

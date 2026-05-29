@@ -106,12 +106,10 @@ export default function HomePage() {
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Navbar />
 
-      {/* ===== HERO ===== */}
       <section style={{
         minHeight: "90vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
         padding: "6rem 1.5rem", textAlign: "center", position: "relative", overflow: "hidden",
       }}>
-        {/* Background SVG */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <svg width="100%" height="100%" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" style={{ display: "block" }}>
             <defs>
@@ -155,7 +153,6 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Feature chips */}
         <div style={{
           display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap",
           marginTop: "3.5rem", position: "relative", zIndex: 1,
@@ -178,7 +175,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== CARA KERJA ===== */}
       <section id="cara-kerja" style={{ padding: "5rem 1.5rem", background: "#ffffff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -215,7 +211,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== FITUR ===== */}
       <section id="fitur" style={{ padding: "5rem 1.5rem", background: "#ffffff" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -255,7 +250,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== CTA BOTTOM ===== */}
       <section style={{ padding: "5rem 1.5rem", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, #eef2ff 0%, #faf5ff 50%, #ecfdf5 100%)" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", display: "flex", alignItems: "center", gap: "4rem" }}>

@@ -43,7 +43,6 @@ export default function Navbar({ onNavClick }: NavbarProps) {
           alignItems: "center",
           justifyContent: "space-between",
         }}>
-          {/* Logo — kiri */}
           <Link href="/" onClick={handleNav} style={{ textDecoration: "none", flexShrink: 0 }}>
             <span style={{
               fontSize: "1.5rem",
@@ -55,7 +54,6 @@ export default function Navbar({ onNavClick }: NavbarProps) {
             </span>
           </Link>
 
-          {/* Kanan: nav links + CTA */}
           <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
             {links.map((l) => {
               const isActive = path === l.href || (l.href !== "/" && path.startsWith(l.href.split("#")[0]));
@@ -81,10 +79,8 @@ export default function Navbar({ onNavClick }: NavbarProps) {
               );
             })}
 
-            {/* Divider */}
             <div style={{ width: 1, height: 20, background: "var(--border-dark)", margin: "0 0.5rem" }} />
 
-            {/* CTA button */}
             <Link
               href="/upload"
               onClick={handleNav}
@@ -95,7 +91,6 @@ export default function Navbar({ onNavClick }: NavbarProps) {
             </Link>
           </div>
 
-          {/* Hamburger — mobile only */}
           <button
             onClick={() => setOpen(!open)}
             className="nav-toggle"
@@ -116,7 +111,6 @@ export default function Navbar({ onNavClick }: NavbarProps) {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {open && (
           <div style={{
             background: "white",

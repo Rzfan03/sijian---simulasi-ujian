@@ -35,9 +35,7 @@ export default function ResultPage() {
       <main style={{ flex: 1, padding: "2rem 1.5rem" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
 
-          {/* Score card */}
           <div className="card" style={{ padding: "2.5rem", textAlign: "center", marginBottom: "1.5rem" }}>
-            {/* Grade circle */}
             <div style={{
               width: 88, height: 88, borderRadius: "50%",
               background: gradeBg, border: `3px solid ${gradeColor}`,
@@ -55,7 +53,6 @@ export default function ResultPage() {
               {score} dari {total} soal benar
             </p>
 
-            {/* Stats row */}
             <div style={{ display: "flex", justifyContent: "center", gap: "2.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
               {[
                 { icon: <CheckCircle2 size={16} color="#059669" />, label: "Benar", val: score, color: "#059669" },
@@ -82,7 +79,6 @@ export default function ResultPage() {
             </div>
           </div>
 
-          {/* Review */}
           <div className="card" style={{ overflow: "hidden" }}>
             <Tabs.Root defaultValue="all">
               <Tabs.List style={{ display: "flex", borderBottom: "1px solid var(--border)", padding: "0 1.5rem" }}>

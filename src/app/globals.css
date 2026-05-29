@@ -2,7 +2,6 @@
 
 @layer base {
   :root {
-    /* Original color scheme preserved */
     --green: #58cc02;
     --green-dark: #46a302;
     --green-light: #d7ffb8;
@@ -23,7 +22,6 @@
     --radius: 16px;
     --radius-sm: 12px;
     --radius-lg: 24px;
-    /* Indigo for primary actions */
     --indigo: #6366f1;
     --indigo-dark: #4f46e5;
     --surface-2: #f0f0f0;
@@ -43,8 +41,6 @@
 }
 
 @layer utilities {
-  /* ===== DUOLINGO-STYLE 3D BUTTONS ===== */
-  /* The signature: bottom border creates a "raised" 3D effect */
   .btn-fun {
     display: inline-flex;
     align-items: center;
@@ -79,28 +75,24 @@
     filter: none !important;
   }
 
-  /* Green — primary action (Duolingo signature) */
   .btn-green {
     background: var(--green);
     color: white;
     border-bottom-color: var(--green-dark);
   }
 
-  /* Blue */
   .btn-blue {
     background: var(--blue);
     color: white;
     border-bottom-color: var(--blue-dark);
   }
 
-  /* Indigo/Purple */
   .btn-indigo {
     background: var(--indigo);
     color: white;
     border-bottom-color: var(--indigo-dark);
   }
 
-  /* Outline — secondary */
   .btn-outline {
     background: white;
     color: var(--text-2);
@@ -109,22 +101,18 @@
   }
   .btn-outline:hover { background: #f5f5f5; }
 
-  /* Red */
   .btn-red {
     background: var(--red);
     color: white;
     border-bottom-color: #cc3b3b;
   }
 
-  /* Orange */
   .btn-orange {
     background: var(--orange);
     color: white;
     border-bottom-color: #cc7700;
   }
 
-  /* ===== DUOLINGO-STYLE CARDS ===== */
-  /* Cards have a bottom border for depth */
   .card-fun {
     background: var(--surface);
     border: 2px solid var(--border);
@@ -137,7 +125,6 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   }
 
-  /* ===== OPTION BUTTONS (exam choices) ===== */
   .option-btn {
     display: flex;
     align-items: flex-start;
@@ -185,7 +172,6 @@
     color: #cc3b3b;
   }
 
-  /* ===== PILLS / BADGES ===== */
   .pill {
     display: inline-flex;
     align-items: center;
@@ -223,7 +209,6 @@
     border: 2px solid var(--indigo);
   }
 
-  /* ===== PROGRESS BAR ===== */
   .progress-track {
     height: 16px;
     background: var(--border);
@@ -249,7 +234,6 @@
     border-radius: 100px;
   }
 
-  /* ===== STREAK / XP COUNTER ===== */
   .xp-counter {
     display: inline-flex;
     align-items: center;
@@ -264,7 +248,6 @@
     color: var(--green-dark);
   }
 
-  /* ===== ANIMATIONS ===== */
   @keyframes bounce-in {
     0% { transform: scale(0.5); opacity: 0; }
     60% { transform: scale(1.15); }
@@ -313,7 +296,6 @@
   .anim-shake { animation: shake 0.4s ease; }
   .anim-pulse-green { animation: pulse-green 1.5s ease-in-out infinite; }
 
-  /* ===== LEGACY COMPAT (used in existing pages) ===== */
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 0.875rem; letter-spacing: 0.03em; text-transform: uppercase; border-radius: var(--radius-sm); padding: 0.75rem 1.5rem; cursor: pointer; border: none; border-bottom: 4px solid transparent; transition: transform 0.08s, border-bottom-width 0.08s; text-decoration: none; white-space: nowrap; font-family: "Nunito", system-ui, sans-serif; }
   .btn:active { transform: translateY(3px); border-bottom-width: 1px !important; }
   .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; }
